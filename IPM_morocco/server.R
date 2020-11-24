@@ -15,10 +15,7 @@ library(ggplot2)
 shinyServer(function(input, output) {
 
     output$ipm_region <- renderPlot({
-        ipm_morocco_data %>% filter(annee==2014) %>%
-            group_by(region) %>%
-            summarise(ipm_regional=mean(as.numeric(IPM) )) %>% 
-            ggplot2::ggplot(aes(x=reorder(region,ipm_regional) ,y=ipm_regional,fill=region)) + geom_bar(stat = "identity",na.rm = TRUE) + scale_fill_brewer(palette = 10)+ coord_flip() +    theme(axis.text.y=element_blank(),axis.ticks.y = element_blank(),axis.title.y = element_blank())
+        
             
 
         # generate bins based on input$bins from ui.R
